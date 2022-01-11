@@ -51,7 +51,7 @@ fig = figure(x_axis_type='datetime',
              plot_width=500,
              x_axis_label='date',
              y_axis_label='Jumlah kasus Omicron',
-             title='Plot kasus Omicron di Angole',
+             title='Plot kasus Omicron di Angola',
              toolbar_location='below',
              tools=select_tools)
 
