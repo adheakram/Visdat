@@ -20,7 +20,7 @@ from bokeh.layouts import row, column, gridplot, layout
 from bokeh.models.widgets import Tabs, Panel
 from bokeh.resources import INLINE
 
-output_notebook(INLINE)
+output_notebook(resources=INLINE)
 
 data = pd.read_csv('data/covid-variants.csv', parse_dates=['date'])
 data
