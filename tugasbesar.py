@@ -25,7 +25,7 @@ output_notebook()
 from google.colab import drive
 drive.mount('/content/drive')
 
-data = pd.read_csv('/content/drive/MyDrive/Visdat/covid-variants.csv', parse_dates=['date'])
+data = pd.read_csv('data/covid-variants.csv', parse_dates=['date'])
 data
 
 """### MENAMPILKAN KASUS OMICRON DI ANGOLA DENGAN HOVERTOOL"""
