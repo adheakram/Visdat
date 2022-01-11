@@ -31,21 +31,21 @@ Omicron = (data[(data['location'] == 'Angola') | (data['location'] == 'Argentina
                .loc[:, ['date', 'location', 'variant','num_sequences_total']]
                .sort_values(['date']))
 
-# Isolasi data jakarta_data2
+
 dataAngola = Omicron[Omicron['location'] == 'Angola']
 
-# Membuat ColumnDataSource objek
+
 dataAngola_cds = ColumnDataSource(dataAngola)
 
-# File yang dioutputkan
+
 output_file('OmicronAngola.html',
             title='Plot kasus Omicron di Angola')
 
 
-# Menspesifikasikan tools seleksi yang akan digunakan
+
 select_tools = ['box_select', 'lasso_select', 'poly_select', 'tap', 'reset']
 
-# Membuat figure
+
 fig = figure(x_axis_type='datetime',
              plot_height=500,
              plot_width=500,
@@ -55,7 +55,6 @@ fig = figure(x_axis_type='datetime',
              toolbar_location='below',
              tools=select_tools)
 
-# Memnambahkan square representing 
 fig.square(x='date',
            y='num_sequences_total',
            source=dataAngola_cds,
@@ -71,10 +70,9 @@ tooltips = [
             ('Total Kasus Omicron','@num_sequences_total'),
            ]
 
-# Menambahkan HoverTool ke figure
+
 fig.add_tools(HoverTool(tooltips=tooltips))
 
-# Visualisasi
 show(fig)
 curdoc().add_root(fig)
 
@@ -107,11 +105,11 @@ fig = figure(x_axis_type='datetime',
              toolbar_location='below',
              tools=select_tools)
 
-# Output inline di notebook
+
 output_file('DataKasusvarian''.html',
             title='Kasus varian virus omicron di Angola dan Argentina')
 
-# Mengkonsolidasikan keyword argumen umum dalam dicts
+
 figuree = {
     'x_axis_type': 'datetime',
     'plot_width': 400,
@@ -136,7 +134,7 @@ Argentina = {
     'legend': 'Argentina'
 }
 
-# Membuat dua figure dan menggambar data
+
 hide_fig = figure(**figuree,
                   title='Klik label untuk menyembunyikan data',y_axis_label='Rebounds')
 hide_fig.circle(**circle, **Angola)
@@ -148,11 +146,10 @@ mute_fig.circle(**circle, **Angola,
 mute_fig.circle(**circle, **Argentina,
                 muted_alpha=0.05)
 
-# Menambahkan interaksi ke legend (label)
 hide_fig.legend.click_policy = 'hide'
 mute_fig.legend.click_policy = 'mute'
 
-# Visualisasi
+
 show(row(hide_fig, mute_fig))
 curdoc().add_root(hide_fig)
 curdoc().add_root(mute_fig)
